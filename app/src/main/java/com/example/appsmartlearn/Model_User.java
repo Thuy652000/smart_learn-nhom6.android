@@ -1,13 +1,14 @@
 package com.example.appsmartlearn;
 
 public class Model_User {
-    private String username;
-    private String password;
-    private String email;
-    private String DoB;
-    private String id_category;
-    private String id_userType;
+    public String username;
+    public String password;
+    public String email;
+    public String DoB;
+    public String id_category;
+    public String id_userType;
 
+    public Model_User() {}
     public Model_User(String username, String password, String email, String DoB, String id_category, String id_userType)
     {
         this.username = username;
@@ -18,7 +19,7 @@ public class Model_User {
         this.id_userType = id_userType;
     }
 
-    public String getUsername() {
+    /*public String getUsername() {
         return username;
     }
 
@@ -64,5 +65,5 @@ public class Model_User {
 
     public void setId_userType(String id_userType) {
         this.id_userType = id_userType;
-    }
+    }*/
 }

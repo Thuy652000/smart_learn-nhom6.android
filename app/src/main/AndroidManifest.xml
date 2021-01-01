@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SetsActivity" />
-        <activity android:name=".Home"/>
         <activity android:name=".ScoreActivity" />
+        <activity android:name=".Home"/>
         <activity android:name=".QuestionActivity" />
         <activity
             android:name=".HomePage"
@@ -58,7 +58,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePage" />
         </activity>
-
+        <activity android:name=".UserProfile"
+            android:parentActivityName=".HomePage"></activity>
+        <activity android:name=".EditUserProfile"
+            android:parentActivityName=".UserProfile"></activity>
+        <activity android:name=".ResetPassword"
+            android:parentActivityName=".UserProfile">
+        </activity>
     </application>
 
 </manifest>

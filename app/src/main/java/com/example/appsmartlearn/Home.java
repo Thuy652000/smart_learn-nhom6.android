@@ -1,22 +1,23 @@
 package com.example.appsmartlearn;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,9 +27,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.appsmartlearn.SetsActivity.category_id;
+public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-public class Home extends AppCompatActivity {
+    FirebaseUser currentUser;
+    FirebaseAuth mAuth;
+    private NavigationView navigationView;
 
     private DrawerLayout drawer;
     private GridView catGrid;
@@ -52,6 +55,11 @@ public class Home extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -99,6 +107,31 @@ public class Home extends AppCompatActivity {
 
             }
         });
+        //updateNavHeader();
+        mReference = FirebaseDatabase.getInstance().getReference("Users");
+        String userID = currentUser.getUid();
+
+        View headerView = navigationView.getHeaderView(0);
+        final TextView tvUsername = headerView.findViewById(R.id.tv_nav_header_username);
+        final TextView tvEmail = headerView.findViewById(R.id.tv_nav_header_email);
+        mReference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Model_User userProfile = snapshot.getValue(Model_User.class);
+
+                if (userProfile != null) {
+                    String username = userProfile.username;
+                    String email = userProfile.email;
+
+                    tvUsername.setText(username);
+                    tvEmail.setText(email);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
 
 
@@ -116,6 +149,26 @@ public class Home extends AppCompatActivity {
             Home.this.finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_profile: {
+                Intent intent = new Intent(Home.this, UserProfile.class);
+                startActivity(intent);
+                break;
+            }
+            case R.id.nav_home: {
+                Intent intent = new Intent(Home.this, HomePage.class);
+                startActivity(intent);
+                break;
+            }
+            case R.id.nav_progress:
+                break;
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
 

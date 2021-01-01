@@ -1,18 +1,13 @@
 package com.example.appsmartlearn;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import  android.widget.BaseAdapter;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class HomeAdapter extends BaseAdapter {
     private List<String> catList;
@@ -53,7 +48,7 @@ public class HomeAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(parent.getContext(),SetsActivity.class);
+                Intent intent = new Intent(parent.getContext(), SetsActivity.class);
                  intent.putExtra("CATEGORY", catList.get(position));
                 intent.putExtra("CATEGORY_ID",position+1);
                 parent.getContext().startActivity(intent);

@@ -1,8 +1,5 @@
 package com.example.appsmartlearn;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,18 +7,27 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     EditText aUsername, aPassword, aEmail, aDoB;
@@ -101,6 +107,29 @@ public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnI
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            String user_id = fAuth.getCurrentUser().getUid();
+                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+
+                            String username = aUsername.getText().toString();
+                            String email = aEmail.getText().toString();
+                            String DoB = aDoB.getText().toString();
+                            String password = aPassword.getText().toString();
+
+                            Map map = new HashMap();
+                            map.put("username", username);
+                            map.put("email", email);
+                            map.put("DoB", DoB);
+                            map.put("password", password);
+                            //map.put("image", "");
+
+                            current_user_db.setValue(map);
+
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(aUsername.getText().toString())
+                                    .build();
+                            user.updateProfile(profileUpdates);
                             Toast.makeText(ActivitySignUp.this, "User Created", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), ActivityLogIn.class));
                         } else {
@@ -118,7 +147,7 @@ public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnI
             @Override
             public void onClick(View v) {
                 Toast.makeText(ActivitySignUp.this, "Fill to Log In", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(),ActivityLogIn.class));
+                startActivity(new Intent(getApplicationContext(), ActivityLogIn.class));
             }
         });
     }

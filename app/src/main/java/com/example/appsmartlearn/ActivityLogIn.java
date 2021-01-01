@@ -1,9 +1,6 @@
 package com.example.appsmartlearn;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -79,7 +79,7 @@ public class ActivityLogIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ActivityLogIn.this, "Fill to Register", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(),ActivitySignUp.class));
+                startActivity(new Intent(getApplicationContext(), ActivitySignUp.class));
             }
         });
 
