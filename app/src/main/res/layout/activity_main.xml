@@ -53,6 +53,8 @@
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:text = "@string/log_in"
         android:textAllCaps="true"
+        android:background="@drawable/rounded_edittext"
+        android:backgroundTint="@color/color1"
         android:textColor="@color/colorPrimary"
         android:drawableLeft="@drawable/ic_sign_in"
         app:layout_constraintBottom_toBottomOf="parent"/>
@@ -67,6 +69,8 @@
         android:text = "@string/register"
         android:textAllCaps="true"
         android:textColor="@color/color2"
+        android:background="@drawable/rounded_edittext"
+        android:backgroundTint="@color/color1"
         app:layout_constraintBottom_toTopOf="@id/btn_log_in"
         android:drawableLeft="@drawable/ic_sign_up"
         />
