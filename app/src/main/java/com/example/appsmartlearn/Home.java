@@ -164,7 +164,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 startActivity(intent);
                 break;
             }
-            case R.id.nav_progress:
+            case R.id.nav_words:
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

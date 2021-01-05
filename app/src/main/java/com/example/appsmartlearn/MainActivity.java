@@ -25,13 +25,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        btn_log_in.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, LessonListActivity.class);
-//                startActivity(intent);
-//            }
-//        });
 
         btn_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override

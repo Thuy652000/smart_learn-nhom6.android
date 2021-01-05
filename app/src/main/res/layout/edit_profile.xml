@@ -5,6 +5,43 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/picton"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleMargin="@dimen/nav_header_vertical_spacing">
+
+        <Button
+            android:id="@+id/btn_back_edit"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@color/picton"
+            android:drawableLeft="@drawable/abc_vector_test"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="2dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="30dp"
+            android:gravity="left"
+            android:text="EDIT PROFILE"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="13dp" />
+    </androidx.appcompat.widget.Toolbar>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -126,6 +163,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_password"
             android:layout_marginTop="20dp">
+
             <Button
                 android:id="@+id/btn_cancel"
                 android:layout_width="wrap_content"
@@ -134,21 +172,25 @@
                 android:layout_marginRight="@dimen/margin_basex2"
                 android:layout_marginBottom="@dimen/margin_basex2"
                 android:layout_weight="1"
-                android:text="Cancel"
                 android:background="@drawable/rounded_edittext"
-                android:textColor="@color/color2"
-                />
+                android:text="Cancel"
+                android:textColor="#FA4848"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <Button
                 android:id="@+id/btn_save"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_marginLeft="@dimen/margin_basex2"
                 android:layout_marginRight="@dimen/margin_basex6"
                 android:layout_marginBottom="@dimen/margin_basex2"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_edittext"
                 android:text="Save"
-                android:textColor="@color/color1"
-                android:background="@drawable/rounded_edittext"/>
+                android:textColor="#B6FAB9"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

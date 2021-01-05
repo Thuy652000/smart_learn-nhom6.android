@@ -25,12 +25,20 @@ public class EditUserProfile extends AppCompatActivity {
     private String userID;
     String username, DoB, password;
     private EditText etNewUsername, etNewDoB, etPassword;
-    private Button btnCancel, btnSave;
+    private Button btnCancel, btnSave, btn_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_profile);
+
+        btn_back = (Button) findViewById(R.id.btn_back_edit);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), UserProfile.class));
+            }
+        });
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();

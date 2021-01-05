@@ -29,7 +29,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     FirebaseUser currentUser;
     FirebaseAuth mAuth;
     private DrawerLayout drawer;
-    private Button btn_normal_vocab, btn_img_vocab, btn_quiz;
+    private Button btn_normal_vocab, btn_img_vocab, btn_video, btn_quiz;
     private NavigationView navigationView;
     private GridView catGrid;
     @Override
@@ -47,6 +47,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         btn_normal_vocab = findViewById(R.id.normal_vocab);
         btn_img_vocab = findViewById(R.id.img_vocab);
         btn_quiz =findViewById(R.id.quiz_vocab);
+        btn_video = findViewById(R.id.video);
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -73,6 +74,14 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             @Override
             public void onClick(View v){
                 startActivity(new Intent(getApplicationContext(), Home.class));
+            }
+        });
+
+        btn_video.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(HomePage.this, ShowVideo.class);
+                startActivity(intent);
             }
         });
 
@@ -105,6 +114,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             }
         });
     }
+
     public void onBackPressed() {
         if(drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -135,8 +145,17 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
                 break;
             }
-            case R.id.nav_progress:
+            case R.id.nav_words: {
+                Intent intent = new Intent(HomePage.this, NoticeWords.class);
+                startActivity(intent);
                 break;
+            }
+            case R.id.log_out: {
+               // FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(HomePage.this, ActivityLogIn.class);
+                startActivity(intent);
+                break;
+           }
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

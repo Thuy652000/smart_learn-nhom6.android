@@ -25,7 +25,8 @@ public class UserProfile extends AppCompatActivity {
 
     private Button btnLogout;
     private Button btnEdit;
-    private Button btnReset;
+    private Button btnReset, btn_back;
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(UserProfile.this, HomePage.class);
@@ -41,6 +42,14 @@ public class UserProfile extends AppCompatActivity {
         btnLogout = (Button) findViewById(R.id.btn_log_out);
         btnEdit = (Button) findViewById(R.id.btn_edit);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
+
+        btn_back = (Button) findViewById(R.id.btn_back_edit);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), HomePage.class));
+            }
+        });
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -127,7 +127,7 @@
             android:password="true"
             android:textColor="@color/color1"
             android:textColorHint="@color/color_hint"
-            app:layout_constraintBottom_toTopOf="@+id/et_email"
+            app:layout_constraintBottom_toTopOf="@+id/addword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toRightOf="@id/iv_confirm_password"
@@ -156,7 +156,7 @@
             android:textColorHint="@color/color_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_email" />
+            app:layout_constraintTop_toBottomOf="@+id/addword" />
 
         <CheckBox
             android:id="@+id/cb_accept"
@@ -207,11 +207,11 @@
             android:layout_marginBottom="24dp"
             android:src="@drawable/ic_email"
             app:layout_constraintBottom_toTopOf="@+id/iv_date_of_birth"
-            app:layout_constraintEnd_toStartOf="@+id/et_email"
+            app:layout_constraintEnd_toStartOf="@+id/addword"
             app:layout_constraintTop_toBottomOf="@+id/iv_confirm_password" />
 
         <EditText
-            android:id="@+id/et_email"
+            android:id="@+id/addword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"

@@ -7,6 +7,8 @@ public class Model_User {
     public String DoB;
     public String id_category;
     public String id_userType;
+    public String Engword;
+    public String Vieword;
 
     public Model_User() {}
     public Model_User(String username, String password, String email, String DoB, String id_category, String id_userType)
@@ -19,51 +21,14 @@ public class Model_User {
         this.id_userType = id_userType;
     }
 
-    /*public String getUsername() {
-        return username;
+
+    public Model_User(String engword, String vieword) {
+        this.Engword = engword;
+        this.Vieword = vieword;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String toString() {
+        return ("\t\t\t\t\t" + "English:" + "\t\t\t\t" + this.Engword + "\n" + "\t\t\t\t\t"+ "Meaning:" + "\t\t\t\t" + this.Vieword) ;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getDoB() {
-        return DoB;
-    }
-
-    public void setDoB(String doB) {
-        DoB = doB;
-    }
-
-    public String getId_category() {
-        return id_category;
-    }
-
-    public void setId_category(String id_category) {
-        this.id_category = id_category;
-    }
-
-    public String getId_userType() {
-        return id_userType;
-    }
-
-    public void setId_userType(String id_userType) {
-        this.id_userType = id_userType;
-    }*/
 }

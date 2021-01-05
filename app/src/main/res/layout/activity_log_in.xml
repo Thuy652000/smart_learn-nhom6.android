@@ -42,13 +42,13 @@ tools:context=".ActivityLogIn">
         android:layout_marginTop="20dp"
         android:layout_marginRight="@dimen/margin_basex2"
         android:src="@drawable/ic_username"
-        app:layout_constraintRight_toLeftOf="@id/et_email"
+        app:layout_constraintRight_toLeftOf="@id/addword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_log_in" />
 
 
     <EditText
-        android:id="@+id/et_email"
+        android:id="@+id/addword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_vertical_margin"
@@ -87,7 +87,7 @@ tools:context=".ActivityLogIn">
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintLeft_toRightOf="@id/iv_password"
     app:layout_constraintStart_toEndOf="@id/iv_password"
-    app:layout_constraintTop_toBottomOf="@id/et_email" />
+    app:layout_constraintTop_toBottomOf="@id/addword" />
 
     <Button
         android:id="@+id/btn_log_in"
@@ -114,6 +114,7 @@ tools:context=".ActivityLogIn">
         android:layout_marginTop="20dp"
         android:text="Forget password? Click here."
         android:textColor="@color/color1"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -139,6 +140,7 @@ tools:context=".ActivityLogIn">
         android:layout_height="wrap_content"
         android:text="Register new account"
         android:textColor="@color/color1"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

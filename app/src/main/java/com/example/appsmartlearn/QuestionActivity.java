@@ -98,25 +98,10 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
                     String Questions  =doc.child("Question").getValue().toString();
 
                     questionList.add(new Question(Questions,A,B,C,D,Integer.valueOf(Ans)));
-//                    Toast.makeText(QuestionActivity.this,""+ Ans,Toast.LENGTH_SHORT).show();
-
-//                    questionList.add(new Question(  doc.child("Question").getValue().toString(),
-//                           doc.child("A").getValue().toString(),
-//                            doc.child("B").getValue().toString(),
-//                            doc.child("C").getValue().toString(),
-//                            doc.child("D").getValue().toString()
-//                            ,Integer.valueOf(Ans)));
-//                    questionList.add(new Question(doc.getKey().concat("Questions"),
-//                            doc.getKey().concat("A"),
-//                            doc.getKey().concat("B"),
-//                            doc.getKey().concat("C"),
-//                            doc.getKey().concat("D"),
-//                            Integer.valueOf(doc.getKey().concat("Ans"))));
 
                 }
                 setQuestion();
                 loadingDialog.cancel();
-
 
             }
 
@@ -125,7 +110,6 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
 
             }
         });
-       // setQuestion();
     }
 
     private void setQuestion() {
@@ -227,7 +211,7 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
             public void run() {
                 changeQuestion();
             }
-        },2000);
+        },1000);
         //changeQuestion();
 
     }

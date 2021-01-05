@@ -3,15 +3,13 @@ package com.example.appsmartlearn;
 public class ModelNormalVocab {
     private String Eng;
     private String Vie;
-    private String Status;
 
     public ModelNormalVocab() {
     }
 
-    public ModelNormalVocab(String vie, String eng, String status) {
+    public ModelNormalVocab(String vie, String eng) {
         this.Vie = vie;
         this.Eng= eng;
-        this.Status = status;
     }
 
     public String getVie() {
@@ -30,11 +28,5 @@ public class ModelNormalVocab {
         Eng = eng;
     }
 
-    public String getStatus() {
-        return Status;
-    }
 
-    public void setStatus(String status) {
-        Status = status;
-    }
 }

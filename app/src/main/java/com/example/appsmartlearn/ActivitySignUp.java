@@ -46,7 +46,7 @@ public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnI
 
         aUsername = findViewById(R.id.et_username);
         aPassword = findViewById(R.id.et_password);
-        aEmail = findViewById(R.id.et_email);
+        aEmail = findViewById(R.id.addword);
         aDoB = findViewById(R.id.et_date_of_birth);
         btn_sign_up = findViewById(R.id.btn_sign_up);
         btn_log_in = findViewById(R.id.btnLogin);

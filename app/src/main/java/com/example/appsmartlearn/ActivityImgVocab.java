@@ -1,9 +1,11 @@
 package com.example.appsmartlearn;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,9 +27,19 @@ public class ActivityImgVocab extends AppCompatActivity {
     FirebaseRecyclerOptions<ModelImageVocab> options;
     FirebaseRecyclerAdapter<ModelImageVocab, ViewImageVocab> adapter;
 
+    Button btn_back;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_img_vocab);
+
+        btn_back = (Button) findViewById(R.id.btn_back_notice);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), HomePage.class));
+            }
+        });
 
         mRecycleView = findViewById(R.id.recycleview_word);
         mRecycleView.setHasFixedSize(true);
@@ -35,7 +47,7 @@ public class ActivityImgVocab extends AppCompatActivity {
         mRecycleView.setLayoutManager(new LinearLayoutManager(this));
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        reference = firebaseDatabase.getReference("Image_Vocab");
+        reference = firebaseDatabase.getReference("Image_Vocab").child("Topic1");
         onStart();
     }
         @Override
@@ -47,7 +59,6 @@ public class ActivityImgVocab extends AppCompatActivity {
                 protected void onBindViewHolder(@NonNull ViewImageVocab viewImageVocab, int i, @NonNull ModelImageVocab image_vocab) {
                     Picasso.get().load(image_vocab.getImg()).into(viewImageVocab.imageView);
                 }
-
                 @NonNull
                 @Override
                 public ViewImageVocab onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -58,8 +69,6 @@ public class ActivityImgVocab extends AppCompatActivity {
 
             adapter.startListening();
             mRecycleView.setAdapter(adapter);
-
-
         }
 
 }

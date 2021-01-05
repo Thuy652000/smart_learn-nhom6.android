@@ -7,23 +7,19 @@
         <item android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
             android:title="Home"/>
-        <item android:id="@+id/nav_progress"
-            android:icon="@drawable/ic_progress"
-            android:title="Study progress"/>
-        <item android:id="@+id/nav_profile"
+        <item
+            android:id="@+id/nav_profile"
             android:icon="@drawable/ic_profile"
-            android:title="Profile"/>
+            android:title="Profile" />
+        <item android:id="@+id/nav_words"
+            android:icon="@drawable/ic_progress"
+            android:title="Notice words"/>
+        <item android:id="@+id/log_out"
+            android:icon="@drawable/ib_logout"
+            android:title="Log out"/>
+
     </group>
 
-    <!--item android:title="Communicate">
-        <menu>
-            <item android:id="@+id/nav_share"
-                android:icon="@drawable/ic_share"
-                android:title="Share"/>
-            <item android:id="@+id/nav_send"
-                android:icon="@drawable/ic_send"
-                android:title="Send"/>
-        </menu>
-    </item-->
+
 
 </menu>

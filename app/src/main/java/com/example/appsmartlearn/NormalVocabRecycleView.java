@@ -25,7 +25,6 @@ public class NormalVocabRecycleView {
     class NormalVocabItemView extends RecyclerView.ViewHolder{
         private TextView mEng;
         private TextView mVie;
-        private CheckBox mStatus;
 
         private  String key;
 
@@ -33,7 +32,6 @@ public class NormalVocabRecycleView {
             super(LayoutInflater.from(mContext).inflate(R.layout.normal_vocab_list_item, parent, false));
 
             mEng = (TextView) itemView.findViewById(R.id.id_nameLesson);
-            mStatus = (CheckBox) itemView.findViewById(R.id.checkbox_Status);
             mVie = (TextView) itemView.findViewById(R.id.id_mean);
 
         }
@@ -41,7 +39,6 @@ public class NormalVocabRecycleView {
         public void bind(ModelNormalVocab vocab, String key){
             mEng.setText(vocab.getEng());
             mVie.setText(vocab.getVie());
-            mStatus.setText(vocab.getStatus());
             this.key = key;
         }
     }
