@@ -29,7 +29,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft= "@dimen/margin_basex4"
+            android:paddingRight= "@dimen/margin_basex4">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -58,6 +60,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_edittext"
+                android:padding="35dp"
                 android:backgroundTint="#A2DF5B"
                 android:drawableLeft="@android:drawable/ic_menu_sort_alphabetically"
                 android:text="@string/_600_toeic_words"
@@ -71,6 +75,8 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="#CDDC39"
+                android:background="@drawable/rounded_edittext"
+                android:padding="35dp"
                 android:drawableLeft="@android:drawable/ic_menu_gallery"
                 android:text="@string/vocabulary_image"
                 android:textColor="@color/darkgreen"
@@ -83,6 +89,8 @@
                 android:layout_marginTop="20dp"
                 android:backgroundTint="#F4E44F"
                 android:drawableLeft="@android:drawable/ic_menu_myplaces"
+                android:background="@drawable/rounded_edittext"
+                android:padding="35dp"
                 android:text="@string/word_quiz"
                 android:textColor="@color/darkgreen"
                 android:textSize="24sp"></Button>
@@ -94,6 +102,8 @@
                 android:layout_marginTop="20dp"
                 android:backgroundTint="#FFF069"
                 android:drawableLeft="@android:drawable/ic_menu_slideshow"
+                android:background="@drawable/rounded_edittext"
+                android:padding="35dp"
                 android:text="Video Lessons"
                 android:textColor="@color/darkgreen"
                 android:textSize="24sp"></Button>

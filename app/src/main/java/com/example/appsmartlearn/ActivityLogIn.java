@@ -3,7 +3,9 @@ package com.example.appsmartlearn;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
@@ -29,11 +31,21 @@ public class ActivityLogIn extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseAuth fAuth;
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
+    private void initPreferences() {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = sharedPreferences.edit();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log_in);
+
+
 
         btn_log_in = findViewById(R.id.btn_log_in);
         aPassword = findViewById(R.id.et_password);
@@ -71,9 +83,12 @@ public class ActivityLogIn extends AppCompatActivity {
                             progressBar.setVisibility(View.INVISIBLE);
                         }
                     }
+
+
                 });
 
             }
+
         });
         btn_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override

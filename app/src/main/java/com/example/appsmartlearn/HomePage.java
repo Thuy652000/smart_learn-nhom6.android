@@ -150,6 +150,11 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                 startActivity(intent);
                 break;
             }
+            case R.id.nav_dictionary: {
+                Intent intent = new Intent(HomePage.this, Dictionary.class);
+                startActivity(intent);
+                break;
+            }
             case R.id.log_out: {
                // FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(HomePage.this, ActivityLogIn.class);

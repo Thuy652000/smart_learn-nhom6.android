@@ -164,6 +164,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 startActivity(intent);
                 break;
             }
+            case R.id.nav_dictionary: {
+                Intent intent = new Intent(Home.this, Dictionary.class);
+                startActivity(intent);
+                break;
+            }
             case R.id.nav_words:
                 break;
         }

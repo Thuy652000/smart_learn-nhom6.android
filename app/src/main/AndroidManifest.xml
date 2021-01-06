@@ -84,6 +84,10 @@
         <activity
             android:name=".ResetPassword"
             android:parentActivityName=".UserProfile" />
+        <activity android:name=".Dictionary"
+            android:parentActivityName=".HomePage"/>
+        <activity android:name=".DefinitionWord"
+            android:parentActivityName=".Dictionary"/>
     </application>
 
 </manifest>
