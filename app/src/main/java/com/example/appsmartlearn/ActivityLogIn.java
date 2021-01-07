@@ -3,9 +3,7 @@ package com.example.appsmartlearn;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
@@ -23,6 +21,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ActivityLogIn extends AppCompatActivity {
 
@@ -31,21 +30,11 @@ public class ActivityLogIn extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseAuth fAuth;
 
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
-
-    private void initPreferences() {
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        editor = sharedPreferences.edit();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log_in);
-
-
 
         btn_log_in = findViewById(R.id.btn_log_in);
         aPassword = findViewById(R.id.et_password);
@@ -75,8 +64,16 @@ public class ActivityLogIn extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(ActivityLogIn.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), HomePage.class));
+
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            if(user.isEmailVerified()) {
+                                Toast.makeText(ActivityLogIn.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), HomePage.class));
+                            } else {
+                                user.sendEmailVerification();
+                                Toast.makeText(ActivityLogIn.this, "Please check your email to verify your account!", Toast.LENGTH_LONG).show();
+                            }
+
                         }
                         else {
                             Toast.makeText(ActivityLogIn.this, "Error !!!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

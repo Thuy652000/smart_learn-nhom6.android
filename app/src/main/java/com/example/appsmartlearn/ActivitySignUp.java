@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -30,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    EditText aUsername, aPassword, aEmail, aDoB;
+    EditText aUsername, aPassword, aConfirmPassword, aEmail, aDoB;
     Button btn_sign_up, btn_log_in;
     DatePickerDialog datePickerDialog;
     ProgressBar progressBar;
@@ -46,6 +47,8 @@ public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnI
 
         aUsername = findViewById(R.id.et_username);
         aPassword = findViewById(R.id.et_password);
+        aConfirmPassword = findViewById(R.id.et_confirm_password);
+
         aEmail = findViewById(R.id.addword);
         aDoB = findViewById(R.id.et_date_of_birth);
         btn_sign_up = findViewById(R.id.btn_sign_up);
@@ -88,18 +91,44 @@ public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnI
             public void onClick(View v) {
                 String email = aEmail.getText().toString().trim();
                 String password = aPassword.getText().toString().trim();
+                String username = aUsername.getText().toString().trim();
+                String confirmpassword = aConfirmPassword.getText().toString().trim();
+
+                if (TextUtils.isEmpty(username)) {
+                    aUsername.setError("Username is required !!!");
+                    aUsername.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(password)) {
+                    aPassword.setError("Password is required !!!");
+                    aPassword.requestFocus();
+                    return;
+                }
+                if (password.length() < 6) {
+                    aPassword.setError("Password must be more than 6 characters !!!");
+                    aPassword.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(confirmpassword)) {
+                    aConfirmPassword.setError("Please confirm password !!!");
+                    aConfirmPassword.requestFocus();
+                    return;
+                }
+                if(!confirmpassword.equals(password)) {
+                    aConfirmPassword.setError("The password confirmation does not match!");
+                    aConfirmPassword.requestFocus();
+                    return;
+                }
 
                 if (TextUtils.isEmpty(email)) {
                     aEmail.setError("Email is required !!!");
                     return;
                 }
 
-                if (TextUtils.isEmpty(password)) {
-                    aPassword.setError("Password is required !!!");
-                    return;
-                }
-                if (password.length() < 6) {
-                    aPassword.setError("Password must be more than 6 characters !!!");
+                if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    aEmail.setError("Please provide valid email!");
+                    aEmail.requestFocus();
                     return;
                 }
 

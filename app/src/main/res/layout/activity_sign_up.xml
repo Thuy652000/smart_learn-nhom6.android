@@ -94,6 +94,7 @@
             android:layout_height="45dp"
             android:layout_marginStart="@dimen/activity_vertical_margin"
             android:hint="Password"
+            android:password="true"
             android:textColor="@color/color1"
             android:textColorHint="@color/color1"
             android:backgroundTint="@color/color1"

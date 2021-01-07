@@ -32,14 +32,22 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.myWordHolder> 
         myWordHolder.engWord.setText(list.get(i).getEngWord());
         String word = list.get(i).getEngWord();
         String mean = list.get(i).getMeaning();
+        String mean2 = list.get(i).getMeaning2();
         String type = list.get(i).getType();
+        String read = list.get(i).getRead();
+        String ex = list.get(i).getEx();
+        String ex2 = list.get(i).getEx2();
         myWordHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Intent intent = new Intent(context, DefinitionWord.class);
                 intent.putExtra("engWord", word);
                 intent.putExtra("meaning", mean);
+                intent.putExtra("meaning2", mean2);
                 intent.putExtra("type", type);
+                intent.putExtra("read", read);
+                intent.putExtra("ex", ex);
+                intent.putExtra("ex2", ex2);
                 context.startActivity(intent);
             }
         });
