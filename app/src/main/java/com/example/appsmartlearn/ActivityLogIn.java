@@ -21,7 +21,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class ActivityLogIn extends AppCompatActivity {
 
@@ -29,6 +28,9 @@ public class ActivityLogIn extends AppCompatActivity {
     Button btn_log_in, btn_sign_up, btn_forget;
     ProgressBar progressBar;
     FirebaseAuth fAuth;
+
+    String KEY_EMAIL = "email";
+    String KEY_PASSWORD = "password";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,16 +66,9 @@ public class ActivityLogIn extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            Toast.makeText(ActivityLogIn.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
 
-                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            if(user.isEmailVerified()) {
-                                Toast.makeText(ActivityLogIn.this, "Logged in Successfully!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), HomePage.class));
-                            } else {
-                                user.sendEmailVerification();
-                                Toast.makeText(ActivityLogIn.this, "Please check your email to verify your account!", Toast.LENGTH_LONG).show();
-                            }
-
+                            startActivity(new Intent(getApplicationContext(), HomePage.class));
                         }
                         else {
                             Toast.makeText(ActivityLogIn.this, "Error !!!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
